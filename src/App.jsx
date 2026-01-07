@@ -54,7 +54,7 @@ function App() {
 
         <a href="https://chat.whatsapp.com/GnPelkWzkThA1uuulN5aGv" className="minimal-link" target="_blank" rel="noopener noreferrer">
             <FaUserFriends className="icon" />
-            <span>Escola Veritas</span>
+            <span>Comunidade Escola Veritas</span>
         </a>
 
       </nav>
