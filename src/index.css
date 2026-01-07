@@ -1,68 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --text-main: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7); 
+  --accent: #d4af37; /* Dourado apenas para hover */
+  --overlay-color: rgba(0, 0, 0, 0.85); /* Escuro para garantir leitura */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-main);
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
+/* --- CAMADA 1: FOTO DE FUNDO --- */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Lembre-se de colocar a foto 'fundo-tatiana.jpg' na pasta public */
+  background: url('/TL_188.jpg') no-repeat center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 25%;
+  filter: blur(3px); /* Desfoque cinematográfico */
+  transform: scale(1);
+  z-index: -2;
+}
+
+/* --- CAMADA 2: PELÍCULA ESCURA --- */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--overlay-color);
+  z-index: -1;
+}
+
+/* --- CAMADA 3: CONTEÚDO --- */
+.layout {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza tudo */
+  text-align: center;
+  z-index: 1;
+  padding: 20px;
+}
+
+/* Tipografia do Nome */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; /* Bem grande e imponente */
+  font-weight: 400;  /* Mais fino e elegante */
+  letter-spacing: -1px;
+  margin-bottom: 5px;
+  color: var(--text-main);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.subtitle {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  margin-bottom: 60px; /* Muito espaço entre nome e links */
+  font-weight: 400;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Links: Sem caixas, sem bordas */
+.link-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 35px; /* Espaço generoso entre os itens */
+}
+
+.minimal-link {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 1.2rem; /* Texto maior */
+  font-weight: 300;  /* Fonte leve */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  position: relative;
+  /* NENHUMA BORDA OU FUNDO AQUI */
+}
+
+.minimal-link .icon {
+  font-size: 1.1rem;
+  margin-right: 15px;
+  color: var(--text-muted); /* Ícone discreto */
+  transition: all 0.4s ease;
+}
+
+/* Efeito Hover: Apenas brilha e muda levemente de cor */
+.minimal-link:hover {
+  color: var(--accent); /* Fica dourado */
+  transform: scale(1.05); /* Cresce um pouquinho */
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); /* Brilho suave */
+}
+
+.minimal-link:hover .icon {
+  color: var(--accent);
+}
+
+/* Rodapé */
+.social-footer {
+  margin-top: 80px;
+  display: flex;
+  gap: 40px;
+}
+
+.social-item {
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  transition: all 0.3s;
+}
+
+.social-item:hover {
+  color: var(--text-main);
+  transform: translateY(-3px);
+}
+
+.footer-text {
+  margin-top: 30px;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
 }
