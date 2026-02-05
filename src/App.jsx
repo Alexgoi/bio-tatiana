@@ -48,7 +48,7 @@ function App() {
           <span>{copied ? "E-mail Copiado!" : "Enviar E-mail"}</span>
         </button>
 
-        <a href="https://tatianalima.adv.br" className="minimal-link" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.tatianalima.adv.br" className="minimal-link" target="_blank" rel="noopener noreferrer">
           <FaGlobe className="icon" />
           <span>Website Oficial</span>
         </a>
